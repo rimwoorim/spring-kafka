@@ -1,4 +1,28 @@
 spring:
   kafka:
+    bootstrap-servers: 193.112.2.149:9092
+
+    consumer:
+          group-id: testtest.local
+          max-poll-records: 10
+          enable-auto-commit: false
+          auto-offset-reset: latest
+
     producer:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      # 批量抓取
+      batch-size: 10
+      # 缓存容量
+      buffer-memory: 524288
+      # 服务器地址
+      bootstrap-servers: 193.112.2.149:9092
+
+    listener:
+          concurrency: 2
+          ack-mode: batch
+
+
+
+
+
